@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mathfern <mathfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 10:56:13 by cclaude           #+#    #+#             */
-/*   Updated: 2019/10/28 17:36:58 by cclaude          ###   ########.fr       */
+/*   Created: 2021/06/19 14:39:21 by mathfern          #+#    #+#             */
+/*   Updated: 2021/07/10 13:24:02 by mathfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # include <stdio.h>
 
 int		get_next_line(int fd, char **line);
-char	*error(char *stock);
-int		newline_check(char *stock, int read_size);
-char	*buf_join(char *stock, char *buf);
-char	*stock_trim(char *stock);
-char	*get_line(char *stock);
+char	*ft_error(char *stock);
+int		ft_newline_check(char *stock, int read_size);
+char	*ft_join(char *stock, char *buf);
+char	*ft_trim(char *stock);
+char	*ft_get_line(char *stock);
 #endif

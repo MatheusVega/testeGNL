@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mathfern <mathfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/25 16:53:10 by cclaude           #+#    #+#             */
-/*   Updated: 2019/10/28 15:00:37 by cclaude          ###   ########.fr       */
+/*   Created: 2021/06/19 13:05:54 by mathfern          #+#    #+#             */
+/*   Updated: 2021/07/10 13:23:49 by mathfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*error(char *stock)
+char	*ft_error(char *stock)
 {
 	free(stock);
 	return (NULL);
 }
 
-int		newline_check(char *stock, int read_size)
+int		ft_newline_check(char *stock, int read_size)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ int		newline_check(char *stock, int read_size)
 	return (0);
 }
 
-char	*buf_join(char *stock, char *buf)
+char	*ft_join(char *stock, char *buf)
 {
 	int		i;
 	int		j;
@@ -49,7 +49,7 @@ char	*buf_join(char *stock, char *buf)
 	while (buf[j] != '\0')
 		j++;
 	if (!(new = malloc(sizeof(char) * (i + j + 1))))
-		return (error(stock));
+		return (ft_error(stock));
 	i = 0;
 	j = 0;
 	while (stock != NULL && stock[i] != '\0')
@@ -63,7 +63,7 @@ char	*buf_join(char *stock, char *buf)
 	return (new);
 }
 
-char	*stock_trim(char *stock)
+char	*ft_trim(char *stock)
 {
 	int		i;
 	int		j;
@@ -76,7 +76,7 @@ char	*stock_trim(char *stock)
 	while (stock[i++] != '\0')
 		j++;
 	if (!(trimmed = malloc(sizeof(char) * j + 1)))
-		return (error(stock));
+		return (ft_ft_error(stock));
 	i = 0;
 	j = 0;
 	while (stock[i] != '\n' && stock[i] != '\0')
@@ -91,7 +91,7 @@ char	*stock_trim(char *stock)
 	return (trimmed);
 }
 
-char	*get_line(char *stock)
+char	*ft_get_line(char *stock)
 {
 	int		i;
 	char	*line;
@@ -100,7 +100,7 @@ char	*get_line(char *stock)
 	while (stock[i] != '\n' && stock[i] != '\0')
 		i++;
 	if (!(line = malloc(sizeof(char) * i + 1)))
-		return (error(stock));
+		return (ft_ft_error(stock));
 	i = 0;
 	while (stock[i] != '\n' && stock[i] != '\0')
 	{

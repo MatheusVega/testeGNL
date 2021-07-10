@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mathfern <mathfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 14:45:08 by cclaude           #+#    #+#             */
-/*   Updated: 2019/10/28 17:28:12 by cclaude          ###   ########.fr       */
+/*   Created: 2021/06/16 21:37:53 by mathfern          #+#    #+#             */
+/*   Updated: 2021/07/10 13:23:56 by mathfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int		get_next_line(int fd, char **line)
 	if (line == NULL || fd < 0 || BUFFER_SIZE < 1 || (read(fd, buf, 0)) < 0)
 		return (-1);
 	read_size = 1;
-	while (!(newline_check(stock, read_size)))
+	while (!(ft_newline_check(stock, read_size)))
 	{
 		if ((read_size = read(fd, buf, BUFFER_SIZE)) == -1)
 			return (-1);
 		buf[read_size] = '\0';
-		if ((stock = buf_join(stock, buf)) == NULL)
+		if ((stock = ft_join(stock, buf)) == NULL)
 			return (-1);
 	}
-	if ((*line = get_line(stock)) == NULL)
+	if ((*line = ft_get_line(stock)) == NULL)
 		return (-1);
-	if ((stock = stock_trim(stock)) == NULL)
+	if ((stock = ft_trim(stock)) == NULL)
 		return (-1);
 	if (read_size != 0)
 		return (1);
