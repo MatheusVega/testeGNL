@@ -3,27 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathfern <mathfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/19 14:39:21 by mathfern          #+#    #+#             */
-/*   Updated: 2021/07/10 12:35:48 by mathfern         ###   ########.fr       */
+/*   Created: 2019/10/11 10:56:13 by cclaude           #+#    #+#             */
+/*   Updated: 2019/10/28 17:36:58 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32
 # endif
+
 # include <stdlib.h>
+# include <fcntl.h>
 # include <string.h>
 # include <unistd.h>
+# include <stdio.h>
 
-int			get_next_line(int fd, char **line);
-size_t		ft_strlen(const char *s);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		*ft_strjoin(char const *s1, char const *s2);
-char		*ft_strdup(const char *s1);
-char		*ft_strchr(const char *s, int c);
-
+int		get_next_line(int fd, char **line);
+char	*error(char *stock);
+int		newline_check(char *stock, int read_size);
+char	*buf_join(char *stock, char *buf);
+char	*stock_trim(char *stock);
+char	*get_line(char *stock);
 #endif
