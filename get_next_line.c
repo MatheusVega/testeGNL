@@ -6,7 +6,7 @@
 /*   By: mathfern <mathfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 21:37:53 by mathfern          #+#    #+#             */
-/*   Updated: 2021/07/10 23:08:29 by mathfern         ###   ########.fr       */
+/*   Updated: 2021/07/10 23:12:33 by mathfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	get_next_line(int fd, char **line)
 	if (line == NULL || fd < 0 || BUFFER_SIZE < 1 || (read(fd, buf, 0)) < 0)
 		return (-1);
 	read_size = 1;
-	ft_valid_array(stock, &read_size, buf, fd);
+	read_size = ft_valid_array(stock, &read_size, buf, fd);
 	*line = ft_get_line(stock);
 	if (*line == NULL)
 		return (-1);
