@@ -6,13 +6,27 @@
 /*   By: mathfern <mathfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 21:37:53 by mathfern          #+#    #+#             */
-/*   Updated: 2021/07/10 13:23:56 by mathfern         ###   ########.fr       */
+/*   Updated: 2021/07/10 22:46:37 by mathfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		get_next_line(int fd, char **line)
+int	ft_valid_array(char *stock, int *read_size, char *buf, int fd)
+{
+	while (!(ft_newline_check(stock, read_size)))
+	{
+		*read_size = read(fd, buf, BUFFER_SIZE);
+		if (read_size == -1)
+			return (-1);
+		buf[*read_size] = '\0';
+		stock = ft_join(stock, buf);
+		if (stock == NULL)
+			return (-1);
+	}
+}
+
+int	get_next_line(int fd, char **line)
 {
 	int			read_size;
 	char		buf[BUFFER_SIZE + 1];
@@ -21,17 +35,12 @@ int		get_next_line(int fd, char **line)
 	if (line == NULL || fd < 0 || BUFFER_SIZE < 1 || (read(fd, buf, 0)) < 0)
 		return (-1);
 	read_size = 1;
-	while (!(ft_newline_check(stock, read_size)))
-	{
-		if ((read_size = read(fd, buf, BUFFER_SIZE)) == -1)
-			return (-1);
-		buf[read_size] = '\0';
-		if ((stock = ft_join(stock, buf)) == NULL)
-			return (-1);
-	}
-	if ((*line = ft_get_line(stock)) == NULL)
+	ft_valid_array(stock, &read_size, buf, fd);
+	*line = ft_get_line(stock);
+	if (*line == NULL)
 		return (-1);
-	if ((stock = ft_trim(stock)) == NULL)
+	stock = ft_trim(stock);
+	if (stock == NULL)
 		return (-1);
 	if (read_size != 0)
 		return (1);

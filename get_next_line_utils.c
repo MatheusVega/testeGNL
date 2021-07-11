@@ -6,7 +6,7 @@
 /*   By: mathfern <mathfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:05:54 by mathfern          #+#    #+#             */
-/*   Updated: 2021/07/10 13:23:49 by mathfern         ###   ########.fr       */
+/*   Updated: 2021/07/10 22:49:05 by mathfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_error(char *stock)
 	return (NULL);
 }
 
-int		ft_newline_check(char *stock, int read_size)
+int	ft_newline_check(char *stock, int read_size)
 {
 	int	i;
 
@@ -48,7 +48,8 @@ char	*ft_join(char *stock, char *buf)
 		i++;
 	while (buf[j] != '\0')
 		j++;
-	if (!(new = malloc(sizeof(char) * (i + j + 1))))
+	new = malloc(sizeof(char) * (i + j + 1));
+	if (!new)
 		return (ft_error(stock));
 	i = 0;
 	j = 0;
@@ -75,7 +76,8 @@ char	*ft_trim(char *stock)
 		i++;
 	while (stock[i++] != '\0')
 		j++;
-	if (!(trimmed = malloc(sizeof(char) * j + 1)))
+	trimmed = malloc(sizeof(char) * j + 1);
+	if (!trimmed)
 		return (ft_ft_error(stock));
 	i = 0;
 	j = 0;
@@ -99,7 +101,8 @@ char	*ft_get_line(char *stock)
 	i = 0;
 	while (stock[i] != '\n' && stock[i] != '\0')
 		i++;
-	if (!(line = malloc(sizeof(char) * i + 1)))
+	line = malloc(sizeof(char) * i + 1);
+	if (!line)
 		return (ft_ft_error(stock));
 	i = 0;
 	while (stock[i] != '\n' && stock[i] != '\0')
