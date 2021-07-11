@@ -6,7 +6,7 @@
 /*   By: mathfern <mathfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 21:37:53 by mathfern          #+#    #+#             */
-/*   Updated: 2021/07/11 00:25:08 by mathfern         ###   ########.fr       */
+/*   Updated: 2021/07/11 00:32:48 by mathfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_valid_array(int read_size, char *buf, int fd)
 	return (read_size);
 }
 
-int	ft_valid_stock(char **stock, char *buf, int fd)
+int	ft_valid_stock(char **stock, char *buf)
 {
 	*stock = ft_join(*stock, buf);
 	if (*stock == NULL)
