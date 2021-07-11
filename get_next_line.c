@@ -6,13 +6,13 @@
 /*   By: mathfern <mathfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 21:37:53 by mathfern          #+#    #+#             */
-/*   Updated: 2021/07/10 23:12:33 by mathfern         ###   ########.fr       */
+/*   Updated: 2021/07/10 23:15:41 by mathfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_valid_array(char *stock, int *read_size, char *buf, int fd)
+void	ft_valid_array(char *stock, int *read_size, char *buf, int fd)
 {
 	while (!(ft_newline_check(stock, *read_size)))
 	{
@@ -35,7 +35,7 @@ int	get_next_line(int fd, char **line)
 	if (line == NULL || fd < 0 || BUFFER_SIZE < 1 || (read(fd, buf, 0)) < 0)
 		return (-1);
 	read_size = 1;
-	read_size = ft_valid_array(stock, &read_size, buf, fd);
+	ft_valid_array(stock, &read_size, buf, fd);
 	*line = ft_get_line(stock);
 	if (*line == NULL)
 		return (-1);
