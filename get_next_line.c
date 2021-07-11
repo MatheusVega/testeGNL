@@ -6,7 +6,7 @@
 /*   By: mathfern <mathfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 21:37:53 by mathfern          #+#    #+#             */
-/*   Updated: 2021/07/10 22:46:37 by mathfern         ###   ########.fr       */
+/*   Updated: 2021/07/10 23:05:50 by mathfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_valid_array(char *stock, int *read_size, char *buf, int fd)
 	while (!(ft_newline_check(stock, read_size)))
 	{
 		*read_size = read(fd, buf, BUFFER_SIZE);
-		if (read_size == -1)
+		if (*read_size == -1)
 			return (-1);
 		buf[*read_size] = '\0';
 		stock = ft_join(stock, buf);
